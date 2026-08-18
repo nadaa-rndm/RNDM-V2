@@ -1,0 +1,128 @@
+:root {
+  /* Surfaces */
+  --bg: #0f1114;
+  --bg-sunken: #0c0e11;
+  --surface: #131519;
+  --surface-raised: #16181d;
+
+  /* Lines */
+  --line: #23262e;
+  --line-soft: #1c1f26;
+  --line-strong: #3a4152;
+
+  /* Type */
+  --text: #e9e6df;
+  --text-dim: #d6d3ca;
+  --muted: #a9adbd;
+  --muted-strong: #8b8fa0;
+
+  /* Accents */
+  --blue: #5b8cff;
+  --green: #55d187;
+  --amber: #ffb02e;
+  --red: #ff5c40;
+  --blue-deep: #1c2f5e;
+  --green-deep: #143524;
+  --amber-deep: #3d2c08;
+
+  --shell: 1180px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--blue);
+}
+
+::selection {
+  background: var(--blue);
+  color: var(--bg);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+/* Shared type helpers -------------------------------------------------- */
+
+.mono {
+  font-family: var(--font-mono), monospace;
+}
+
+.serif {
+  font-family: var(--font-serif), serif;
+  font-weight: 400;
+}
+
+/* Keyframes ------------------------------------------------------------ */
+
+@keyframes dot {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -18;
+  }
+}
+
+@keyframes cursor {
+  0%,
+  55% {
+    opacity: 1;
+  }
+  56%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

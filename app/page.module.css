@@ -1,0 +1,6 @@
+.page {
+  min-height: 100vh;
+  background:
+    radial-gradient(90% 36% at 50% 0%, #171a20 0%, var(--bg) 70%),
+    var(--bg);
+}

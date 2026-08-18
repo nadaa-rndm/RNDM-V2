@@ -1,0 +1,56 @@
+.compose {
+  border-top: 1px solid var(--line);
+  padding: 80px 28px 70px;
+  text-align: center;
+}
+
+.title {
+  font-family: var(--font-serif), serif;
+  font-weight: 400;
+  font-size: clamp(34px, 5vw, 64px);
+  line-height: 1.05;
+  margin: 0 0 14px;
+}
+
+.title em {
+  color: var(--blue);
+}
+
+.sub {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0 0 30px;
+}
+
+.field {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--surface-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 8px 8px 8px 22px;
+  text-align: left;
+  transition: border-color 0.15s ease;
+}
+
+.field:hover {
+  border-color: var(--blue);
+}
+
+.placeholder {
+  flex: 1;
+  font-size: 14px;
+  color: var(--muted-strong);
+}
+
+.send {
+  background: var(--blue);
+  color: var(--bg);
+  font-weight: 600;
+  font-size: 13px;
+  padding: 12px 22px;
+  border-radius: 999px;
+}

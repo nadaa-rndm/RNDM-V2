@@ -1,0 +1,78 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 28px;
+  background: rgba(15, 17, 20, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+}
+
+.mark {
+  display: grid;
+  grid-template-columns: repeat(3, 4px);
+  grid-template-rows: repeat(3, 4px);
+  gap: 2px;
+}
+
+.mark i {
+  background: var(--text);
+}
+
+.mark i.accent {
+  background: var(--blue);
+}
+
+.mark i.hollow {
+  background: transparent;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  font-size: 13px;
+}
+
+.nav a {
+  color: var(--muted);
+  transition: color 0.15s ease;
+}
+
+.nav a:hover {
+  color: var(--text);
+}
+
+.cta {
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--blue);
+  color: var(--bg);
+  padding: 10px 20px;
+  border-radius: 999px;
+  transition: background 0.15s ease;
+}
+
+.cta:hover {
+  background: var(--text);
+  color: var(--bg);
+}
+
+@media (max-width: 720px) {
+  .nav {
+    display: none;
+  }
+}

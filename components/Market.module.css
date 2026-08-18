@@ -1,0 +1,25 @@
+.narrow {
+  max-width: 22ch;
+}
+
+.stat {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.value {
+  font-family: var(--font-serif), serif;
+  font-size: clamp(40px, 4.6vw, 60px);
+  line-height: 1;
+}
+
+.caption {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+}
