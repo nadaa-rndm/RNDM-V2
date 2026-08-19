@@ -1,6 +1,5 @@
 .card {
   border: 1px solid var(--line);
-  border-radius: 16px;
   overflow: hidden;
   background: var(--surface);
   display: flex;
@@ -13,22 +12,66 @@
 }
 
 .cover {
-  height: 190px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  padding: 20px;
+  height: 260px;
+  position: relative;
+  overflow: hidden;
+}
+
+.coverArt {
+  object-fit: cover;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(16, 20, 28, 0.26) 0%,
+    rgba(16, 20, 28, 0) 36%,
+    rgba(16, 20, 28, 0.34) 100%
+  );
+  pointer-events: none;
+}
+
+.coverEyebrow {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--muted-strong);
+  pointer-events: none;
 }
 
 .coverName {
-  font-family: var(--font-serif), serif;
-  font-size: 42px;
+  position: absolute;
+  left: 20px;
+  bottom: 18px;
+  font-family: var(--font-display), var(--font-tourney), sans-serif;
+  font-size: 30px;
+  color: var(--text);
+  pointer-events: none;
 }
 
-.coverMeta {
+.coverBadge {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
   font-family: var(--font-mono), monospace;
   font-size: 11px;
-  color: var(--accent);
+  color: #ffffff;
+  padding: 6px 12px;
+  pointer-events: none;
+}
+
+/* Once a screenshot fills the cover, the labels sit on the scrim in white. */
+.onImage .coverEyebrow {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.onImage .coverName {
+  color: #ffffff;
 }
 
 .meta {

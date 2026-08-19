@@ -1,56 +1,49 @@
-import type { HeroVariant } from "@/lib/site";
+import { heroA, heroB, heroC, heroD, type HeroVariant } from "@/lib/content";
+import HeroStrips from "./HeroStrips";
 import styles from "./Hero.module.css";
 
-const ALLOCATION = [
-  { label: "Tokenised equities", share: "46%", color: "var(--blue)" },
-  { label: "Treasuries", share: "25%", color: "var(--green)" },
-  { label: "Yield strategies", share: "15%", color: "var(--amber)" },
-  { label: "Cash · rails", share: "14%", color: "var(--line-strong)" },
-];
-
 function HeroA() {
+  const { card } = heroA;
+
   return (
     <section className={styles.split}>
       <div className={styles.copyIn}>
         <div className={styles.status}>
           <span className={styles.pulse} />
-          THE DESK IS ONLINE
+          {heroA.status}
         </div>
         <h1 className={styles.title}>
-          A fintech desk of three agents.
+          {heroA.title}
           <br />
-          <em>You brief. They ship.</em>
+          <em>{heroA.titleEm}</em>
         </h1>
-        <p className={styles.lede}>
-          Ganesh covers tokenised stocks and fund management, Adam builds every layer of the
-          product, Mira takes it to market. Briefed by you, built and run by RNDM.
-        </p>
+        <p className={styles.lede}>{heroA.lede}</p>
         <div className={styles.actions}>
-          <a href="#compose" className={styles.primary}>
-            Send one task →
+          <a href={heroA.primary.href} className={styles.primaryLoud}>
+            {heroA.primary.label}
           </a>
-          <a href="#desk" className={styles.secondary}>
-            Meet the desk
+          <a href={heroA.secondary.href} className={styles.secondaryLoud}>
+            {heroA.secondary.label}
           </a>
         </div>
       </div>
 
       <div className={styles.card}>
         <div className={styles.cardHead}>
-          <span className={styles.label}>PORTFOLIO MANAGER · LIVE</span>
-          <span className={styles.delta}>+2.4% MTD</span>
+          <span className={styles.label}>{card.label}</span>
+          <span className={styles.delta}>{card.delta}</span>
         </div>
 
         <div className={styles.cardBody}>
           <div className={styles.donut}>
             <div className={styles.donutHole}>
-              <span className={styles.donutValue}>$4.2M</span>
-              <span className={styles.donutCaption}>AUM</span>
+              <span className={styles.donutValue}>{card.total}</span>
+              <span className={styles.donutCaption}>{card.totalCaption}</span>
             </div>
           </div>
 
           <div className={styles.legend}>
-            {ALLOCATION.map((row) => (
+            {card.allocation.map((row) => (
               <div key={row.label} className={styles.legendRow}>
                 <span>
                   <i className={styles.swatch} style={{ background: row.color }} />
@@ -63,9 +56,9 @@ function HeroA() {
         </div>
 
         <div className={styles.rail}>
-          <svg viewBox="0 0 560 36" preserveAspectRatio="none" role="img" aria-label="Account to on/off ramp to settlement">
+          <svg viewBox="0 0 560 36" preserveAspectRatio="none" role="img" aria-label={card.rail.alt}>
             <text x="0" y="24" fill="var(--muted-strong)" fontSize="10" fontFamily="var(--font-mono), monospace">
-              ACCOUNT
+              {card.rail.from}
             </text>
             <line
               x1="66"
@@ -78,7 +71,7 @@ function HeroA() {
               className={styles.railDash}
             />
             <text x="210" y="24" fill="var(--muted-strong)" fontSize="10" fontFamily="var(--font-mono), monospace">
-              ON/OFF RAMP
+              {card.rail.via}
             </text>
             <line
               x1="306"
@@ -91,7 +84,7 @@ function HeroA() {
               className={styles.railDash}
             />
             <text x="430" y="24" fill="var(--blue)" fontSize="10" fontFamily="var(--font-mono), monospace">
-              SETTLEMENT ✓
+              {card.rail.to}
             </text>
           </svg>
         </div>
@@ -105,23 +98,20 @@ function HeroB() {
     <section className={styles.centered}>
       <div className={styles.badge}>
         <span className={styles.pulse} />
-        RNDM FINTECH · THE DESK IS ONLINE
+        {heroB.badge}
       </div>
       <h1 className={styles.title}>
-        Tokenised markets,
+        {heroB.title}
         <br />
-        <em>staffed by agents.</em>
+        <em>{heroB.titleEm}</em>
       </h1>
-      <p className={styles.lede}>
-        Research, engineering and marketing — one desk that takes tokenised stocks, a full
-        portfolio manager and banking solutions from thesis to shipped.
-      </p>
+      <p className={styles.lede}>{heroB.lede}</p>
       <div className={styles.actions}>
-        <a href="#compose" className={styles.primary}>
-          Send one task →
+        <a href={heroB.primary.href} className={styles.primary}>
+          {heroB.primary.label}
         </a>
-        <a href="#transcript" className={styles.secondary}>
-          Read a transcript
+        <a href={heroB.secondary.href} className={styles.secondary}>
+          {heroB.secondary.label}
         </a>
       </div>
     </section>
@@ -129,68 +119,82 @@ function HeroB() {
 }
 
 function HeroC() {
+  const { thread } = heroC;
+
   return (
     <section className={styles.split}>
       <div>
         <div className={styles.status}>
           <span className={styles.pulse} />
-          REPLIES IN MINUTES, NOT MEETINGS
+          {heroC.status}
         </div>
         <h1 className={styles.title}>
-          The fintech desk
+          {heroC.title}
           <br />
-          <em>you don&apos;t have to hire.</em>
+          <em>{heroC.titleEm}</em>
         </h1>
-        <p className={styles.lede}>
-          Brief it like a colleague. Ganesh answers with analysis, Adam with a build, Mira with a
-          launch.
-        </p>
-        <a href="#compose" className={`${styles.primary} ${styles.inlineCta}`}>
-          Send one task →
+        <p className={styles.lede}>{heroC.lede}</p>
+        <a href={heroC.cta.href} className={`${styles.primary} ${styles.inlineCta}`}>
+          {heroC.cta.label}
         </a>
       </div>
 
       <div className={styles.thread}>
-        <div className={styles.fromYou}>Can we offer tokenised stocks by Q4?</div>
+        <div className={styles.fromYou}>{thread.fromYou}</div>
 
-        <div className={styles.reply}>
-          <span
-            className={styles.avatar}
-            style={{ background: "var(--blue-deep)", color: "var(--blue)" }}
-          >
-            G
-          </span>
-          <div className={styles.bubble}>
-            Yes — coverage note by Friday, portfolio manager scoped next week, rails after. Cathena
-            shipped on this exact path.
+        {thread.replies.map((reply) => (
+          <div key={reply.initial} className={styles.reply}>
+            <span
+              className={styles.avatar}
+              style={{ background: reply.tint, color: reply.accent }}
+            >
+              {reply.initial}
+            </span>
+            <div className={styles.bubble}>{reply.text}</div>
           </div>
-        </div>
-
-        <div className={styles.reply}>
-          <span
-            className={styles.avatar}
-            style={{ background: "var(--green-deep)", color: "var(--green)" }}
-          >
-            A
-          </span>
-          <div className={styles.bubble}>
-            Stack reserved. Frontend + backend from one desk.
-          </div>
-        </div>
+        ))}
 
         <div className={styles.typing}>
           <i />
           <i />
           <i />
-          Mira is typing…
+          {thread.typing}
         </div>
       </div>
     </section>
   );
 }
 
+function HeroD() {
+  return (
+    <section className={styles.strips}>
+      <div className={styles.stripIntro}>
+        <div>
+          <h1 className={styles.stripTitle}>
+            {heroD.title}
+            <br />
+            {heroD.titleSecondLine}
+          </h1>
+          <div className={styles.stripActions}>
+            <a href={heroD.primary.href} className={styles.stripPrimary}>
+              {heroD.primary.label}
+            </a>
+            <a href={heroD.secondary.href} className={styles.stripSecondary}>
+              {heroD.secondary.label}
+            </a>
+          </div>
+        </div>
+        <p className={styles.stripLede}>{heroD.lede}</p>
+      </div>
+
+      <HeroStrips />
+    </section>
+  );
+}
+
 export default function Hero({ variant }: { variant: HeroVariant }) {
   if (variant === "A") return <HeroA />;
+  if (variant === "B") return <HeroB />;
   if (variant === "C") return <HeroC />;
-  return <HeroB />;
+  return <HeroD />;
 }

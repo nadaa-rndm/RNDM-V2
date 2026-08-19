@@ -1,33 +1,34 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Instrument_Sans, Instrument_Serif } from "next/font/google";
+import { meta } from "@/lib/content";
+import { Roboto_Mono, Tourney } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const sans = Instrument_Sans({
+const mono = Roboto_Mono({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  display: "swap",
-  variable: "--font-sans",
-});
-
-const mono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
   variable: "--font-mono",
 });
 
-const serif = Instrument_Serif({
+/** Fallback for the display face while At Amiga loads, and for missing glyphs. */
+const tourney = Tourney({
   subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
+  weight: ["400", "700"],
   display: "swap",
-  variable: "--font-serif",
+  variable: "--font-tourney",
+});
+
+const display = localFont({
+  src: "./fonts/AtAmiga.woff",
+  weight: "400 800",
+  display: "swap",
+  variable: "--font-display",
 });
 
 export const metadata: Metadata = {
-  title: "RNDM Fintech — a desk of three agents",
-  description:
-    "Research, engineering and marketing — one desk that takes tokenised stocks, a full portfolio manager and banking solutions from thesis to shipped.",
+  title: meta.title,
+  description: meta.description,
 };
 
 export default function RootLayout({
@@ -36,7 +37,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable} ${serif.variable}`}>
+    <html
+      lang="en"
+      className={`${mono.variable} ${tourney.variable} ${display.variable}`}
+    >
       <body>{children}</body>
     </html>
   );

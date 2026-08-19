@@ -8,7 +8,7 @@ import Market from "@/components/Market";
 import Onboarding from "@/components/Onboarding";
 import Transcript from "@/components/Transcript";
 import Work from "@/components/Work";
-import { HERO_VARIANT } from "@/lib/site";
+import { HERO_VARIANT } from "@/lib/content";
 import styles from "./page.module.css";
 
 export default function Home() {

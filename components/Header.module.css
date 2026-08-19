@@ -7,7 +7,7 @@
   justify-content: space-between;
   gap: 16px;
   padding: 14px 28px;
-  background: rgba(15, 17, 20, 0.85);
+  background: rgba(244, 246, 251, 0.88);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
@@ -26,6 +26,7 @@
   grid-template-columns: repeat(3, 4px);
   grid-template-rows: repeat(3, 4px);
   gap: 2px;
+  flex: none;
 }
 
 .mark i {
@@ -40,11 +41,22 @@
   background: transparent;
 }
 
+.ticker {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  color: var(--muted-strong);
+}
+
 .nav {
   display: flex;
   align-items: center;
   gap: 26px;
-  font-size: 13px;
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
 }
 
 .nav a {
@@ -57,18 +69,27 @@
 }
 
 .cta {
-  font-size: 13px;
-  font-weight: 600;
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  font-weight: 700;
   background: var(--blue);
-  color: var(--bg);
-  padding: 10px 20px;
-  border-radius: 999px;
-  transition: background 0.15s ease;
+  color: var(--on-accent);
+  padding: 12px 24px;
+  clip-path: var(--notch);
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
 .cta:hover {
   background: var(--text);
   color: var(--bg);
+}
+
+@media (max-width: 1080px) {
+  .ticker {
+    display: none;
+  }
 }
 
 @media (max-width: 720px) {

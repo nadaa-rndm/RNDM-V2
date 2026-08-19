@@ -1,31 +1,44 @@
 :root {
   /* Surfaces */
-  --bg: #0f1114;
-  --bg-sunken: #0c0e11;
-  --surface: #131519;
-  --surface-raised: #16181d;
+  --bg: #f4f6fb;
+  --bg-glow: #e2e8f5;
+  --bg-sunken: #e9edf5;
+  --surface: #ffffff;
+  --surface-raised: #eef1f8;
 
   /* Lines */
-  --line: #23262e;
-  --line-soft: #1c1f26;
-  --line-strong: #3a4152;
+  --line: #d8deea;
+  --line-soft: #e4e9f2;
+  --line-strong: #b9c3d6;
 
   /* Type */
-  --text: #e9e6df;
-  --text-dim: #d6d3ca;
-  --muted: #a9adbd;
-  --muted-strong: #8b8fa0;
+  --text: #10141c;
+  --text-dim: #2a3140;
+  --muted: #5a6577;
+  --muted-strong: #7d8798;
 
   /* Accents */
-  --blue: #5b8cff;
-  --green: #55d187;
-  --amber: #ffb02e;
-  --red: #ff5c40;
-  --blue-deep: #1c2f5e;
-  --green-deep: #143524;
-  --amber-deep: #3d2c08;
+  --blue: #2f6bff;
+  --green: #159a47;
+  --amber: #ff5c00;
+  --red: #ff5c00;
+  --blue-tint: #dbe6ff;
+  --green-tint: #d9f3e1;
+  --amber-tint: #ffe4d1;
+  --on-accent: #ffffff;
 
   --shell: 1180px;
+  --shell-wide: 1400px;
+
+  /* Clipped corner shared by every solid call-to-action */
+  --notch: polygon(
+    10px 0,
+    100% 0,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    0 100%,
+    0 10px
+  );
 }
 
 * {
@@ -41,7 +54,7 @@ body {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-sans), sans-serif;
+  font-family: var(--font-mono), monospace;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -66,15 +79,23 @@ p {
   margin: 0;
 }
 
+/* The display face carries emphasis through colour, never italics. */
+em {
+  font-style: normal;
+}
+
 /* Shared type helpers -------------------------------------------------- */
 
 .mono {
   font-family: var(--font-mono), monospace;
 }
 
-.serif {
-  font-family: var(--font-serif), serif;
-  font-weight: 400;
+.display {
+  font-family: var(--font-display), var(--font-tourney), sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.12;
 }
 
 /* Keyframes ------------------------------------------------------------ */

@@ -1,72 +1,60 @@
+import { transcript } from "@/lib/content";
 import { Section } from "./Section";
 import styles from "./Transcript.module.css";
 
-const COVERAGE_ROWS = [
-  { label: "xAAPL — tracking error", value: "8 bps · 6 sessions", color: "var(--green)" },
-  { label: "Fund NAV drift vs index", value: "40 bps · rebalance queued", color: "var(--amber)" },
-  { label: "Verdict", value: "BUILD — thesis attached", color: "var(--blue)", strong: true },
-];
-
-function Message({
-  initial,
-  accent,
-  accentDeep,
-  stamp,
-  children,
-}: {
+type Speaker = {
   initial: string;
   accent: string;
-  accentDeep: string;
+  tint: string;
+  text: string;
   stamp: string;
-  children: React.ReactNode;
-}) {
+};
+
+function Message({ speaker }: { speaker: Speaker }) {
   return (
     <div
       className={styles.message}
-      style={{ "--accent": accent, "--accent-deep": accentDeep } as React.CSSProperties}
+      style={
+        {
+          "--accent": speaker.accent,
+          "--accent-tint": speaker.tint,
+        } as React.CSSProperties
+      }
     >
-      <span className={styles.avatar}>{initial}</span>
+      <span className={styles.avatar}>{speaker.initial}</span>
       <div className={styles.body}>
-        <div className={styles.bubble}>{children}</div>
-        <span className={styles.stamp}>{stamp}</span>
+        <div className={styles.bubble}>{speaker.text}</div>
+        <span className={styles.stamp}>{speaker.stamp}</span>
       </div>
     </div>
   );
 }
 
 export default function Transcript() {
+  const { attachment, terminal, storyboard } = transcript;
+
   return (
     <Section id="transcript" sunken>
       <div className={styles.thread}>
         <div className={styles.head}>
-          <h2 className={styles.title}>What a week with the desk reads like</h2>
-          <span className={styles.eyebrow}>TRANSCRIPT · UNEDITED</span>
+          <h2 className={styles.title}>{transcript.title}</h2>
+          <span className={styles.eyebrow}>{transcript.eyebrow}</span>
         </div>
 
         <div className={styles.fromYou}>
-          <div className={styles.bubble}>
-            We want to offer tokenised stocks to our customers. Can your desk take it?
-          </div>
-          <span className={styles.stamp}>YOU · 09:41</span>
+          <div className={styles.bubble}>{transcript.fromYou.text}</div>
+          <span className={styles.stamp}>{transcript.fromYou.stamp}</span>
         </div>
 
-        <Message
-          initial="G"
-          accent="var(--blue)"
-          accentDeep="var(--blue-deep)"
-          stamp="GANESH · 09:44"
-        >
-          Yes. Coverage opens today — analysis note attached. Portfolio manager scope and banking
-          rails follow this week.
-        </Message>
+        <Message speaker={transcript.ganesh} />
 
         <div className={styles.attachment}>
           <div className={styles.attachmentHead}>
-            <span className={styles.attachmentTitle}>⊕ RN-014 · TOKENISED EQUITY COVERAGE</span>
-            <span className={styles.attachmentFile}>GANESH.PDF</span>
+            <span className={styles.attachmentTitle}>{attachment.title}</span>
+            <span className={styles.attachmentFile}>{attachment.file}</span>
           </div>
           <div className={styles.rows}>
-            {COVERAGE_ROWS.map((row) => (
+            {attachment.rows.map((row) => (
               <div key={row.label} className={styles.row}>
                 <span className={styles.rowLabel}>{row.label}</span>
                 <span
@@ -80,58 +68,38 @@ export default function Transcript() {
           </div>
         </div>
 
-        <Message
-          initial="A"
-          accent="var(--green)"
-          accentDeep="var(--green-deep)"
-          stamp="ADAM · DAY 08"
-        >
-          Picking up the spec. Frontend, backend and contracts are one stack on my desk.
-        </Message>
+        <Message speaker={transcript.adam} />
 
         <div className={styles.terminal}>
           <div className={styles.terminalBar}>
             <i style={{ background: "var(--red)" }} />
             <i style={{ background: "var(--amber)" }} />
             <i style={{ background: "var(--green)" }} />
-            <span className={styles.terminalName}>adam@rndm — build.log</span>
+            <span className={styles.terminalName}>{terminal.name}</span>
           </div>
           <div className={styles.log}>
-            <div>
-              <span style={{ color: "var(--green)" }}>✓</span> pricing engine — 14 venues, 200ms
-              refresh
-            </div>
-            <div>
-              <span style={{ color: "var(--green)" }}>✓</span> trading &amp; portfolio UI
-            </div>
-            <div>
-              <span style={{ color: "var(--amber)" }}>▸</span> settlement contracts — audit
-              scheduled <span className={styles.caret}>▍</span>
-            </div>
+            {terminal.lines.map((line) => (
+              <div key={line.text}>
+                <span style={{ color: line.color }}>{line.mark}</span> {line.text}
+                {line.caret && <span className={styles.caret}> ▍</span>}
+              </div>
+            ))}
           </div>
         </div>
 
-        <Message
-          initial="M"
-          accent="var(--amber)"
-          accentDeep="var(--amber-deep)"
-          stamp="MIRA · DAY 21"
-        >
-          Launch cut is ready — 45s film plus the promo kit. Storyboard attached; full video lands
-          with the release.
-        </Message>
+        <Message speaker={transcript.mira} />
 
         <div className={styles.storyboard}>
-          <div className={`${styles.frame} ${styles.frameQuote}`}>“Your stocks, onchain”</div>
+          <div className={`${styles.frame} ${styles.frameQuote}`}>{storyboard.quote}</div>
           <div className={`${styles.frame} ${styles.frameBars}`}>
-            <span style={{ width: "60%", background: "var(--blue)" }} />
-            <span style={{ width: "42%", background: "var(--green)" }} />
-            <span style={{ width: "50%", background: "var(--amber)" }} />
+            {storyboard.bars.map((bar) => (
+              <span key={bar.width} style={{ width: bar.width, background: bar.color }} />
+            ))}
           </div>
           <div className={`${styles.frame} ${styles.framePlay}`}>
             <span />
           </div>
-          <div className={`${styles.frame} ${styles.frameLaunch}`}>LAUNCH DAY</div>
+          <div className={`${styles.frame} ${styles.frameLaunch}`}>{storyboard.launch}</div>
         </div>
       </div>
     </Section>

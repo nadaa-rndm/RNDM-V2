@@ -1,10 +1,5 @@
+import { header } from "@/lib/content";
 import styles from "./Header.module.css";
-
-const NAV = [
-  { href: "#desk", label: "The desk" },
-  { href: "#transcript", label: "Transcript" },
-  { href: "#work", label: "Work" },
-];
 
 export default function Header() {
   return (
@@ -21,19 +16,28 @@ export default function Header() {
           <i />
           <i />
         </span>
-        RNDM FINTECH
+        {header.brand}
+      </div>
+
+      <div className={styles.ticker}>
+        {header.ticker.map((item) => (
+          <span key={item.label}>
+            {item.label}
+            <span style={{ color: item.color }}>{item.value}</span>
+          </span>
+        ))}
       </div>
 
       <nav className={styles.nav}>
-        {NAV.map((item) => (
+        {header.nav.map((item) => (
           <a key={item.href} href={item.href}>
             {item.label}
           </a>
         ))}
       </nav>
 
-      <a href="#compose" className={styles.cta}>
-        Send a task
+      <a href={header.cta.href} className={styles.cta}>
+        {header.cta.label}
       </a>
     </header>
   );

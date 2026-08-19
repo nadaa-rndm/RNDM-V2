@@ -41,7 +41,9 @@ export function SectionHead({
 }) {
   return (
     <div className={styles.head}>
-      <h2 className={[styles.title, titleClassName].filter(Boolean).join(" ")}>{title}</h2>
+      <h2 className={[styles.title, styles.marked, titleClassName].filter(Boolean).join(" ")}>
+        {title}
+      </h2>
       <span className={styles.eyebrow}>{eyebrow}</span>
     </div>
   );

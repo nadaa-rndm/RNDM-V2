@@ -1,6 +1,5 @@
 .phase {
   border: 1px solid var(--line);
-  border-radius: 16px;
   background: var(--surface);
   padding: 22px;
   display: flex;
@@ -15,7 +14,7 @@
 }
 
 .name {
-  font-family: var(--font-serif), serif;
+  font-family: var(--font-display), var(--font-tourney), sans-serif;
   font-size: 24px;
 }
 

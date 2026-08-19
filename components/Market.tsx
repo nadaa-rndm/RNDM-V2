@@ -1,23 +1,6 @@
+import { market } from "@/lib/content";
 import { Section, SectionHead, Shell, sectionStyles } from "./Section";
 import styles from "./Market.module.css";
-
-const STATS = [
-  {
-    value: "$29B",
-    color: "var(--blue)",
-    caption: "Tokenised RWA value onchain, ex-stablecoins — Q1 2026",
-  },
-  {
-    value: "+140%",
-    color: "var(--green)",
-    caption: "Tokenised equity market-cap growth through 2026, to ~$2B",
-  },
-  {
-    value: "$13.4B",
-    color: "var(--amber)",
-    caption: "Tokenised US Treasuries — the largest, fastest-moving class",
-  },
-];
 
 export default function Market() {
   return (
@@ -27,14 +10,14 @@ export default function Market() {
           titleClassName={styles.narrow}
           title={
             <>
-              The market got real. <em>Desks didn&apos;t scale.</em>
+              {market.title} <em>{market.titleEm}</em>
             </>
           }
-          eyebrow="SOURCES: RWA.XYZ · DEFILLAMA · 2026"
+          eyebrow={market.eyebrow}
         />
 
         <div className={`${sectionStyles.grid} ${sectionStyles.cols3}`}>
-          {STATS.map((stat) => (
+          {market.stats.map((stat) => (
             <div key={stat.value} className={styles.stat}>
               <span className={styles.value} style={{ color: stat.color }}>
                 {stat.value}
